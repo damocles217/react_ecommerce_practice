@@ -11,7 +11,8 @@ if (($CHECK_YARN!=0)); then
 		exit 1
 	fi
 else
-	yarn format && yarn lint
+	yarn format
+	yarn lint
 	yarn test
 
 	CHECK_TEST=$?
