@@ -2,7 +2,7 @@ import { act, screen, render } from '@testing-library/react';
 import React from 'react';
 import { Route, MemoryRouter, Routes } from 'react-router-dom';
 import { unmountComponentAtNode } from 'react-dom';
-import Home from '../pages/Home/Home';
+import Home from '@src/pages/Home/Home';
 import App from './App';
 
 jest.mock('./App', () => {
@@ -26,10 +26,11 @@ afterEach(() => {
 	container.remove();
 	container = null;
 });
-test('Descrbie', async () => {
+test('Render the main page', async () => {
 	act(() => {
 		render(<App />, { container: container });
 	});
 	expect(screen.getByText('Hello World')).toBeInTheDocument();
-	expect(screen.findByTestId('login-form'));
+	const element = await screen.findByTestId('login-form');
+	expect(element.textContent).toBe('Hello World');
 });
