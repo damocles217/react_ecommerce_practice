@@ -1,0 +1,41 @@
+// this file is a Component talking about ITCSS
+@import './utils/utils.scss';
+
+// import for using all values in this file
+
+@import './settings/palette.scss';
+@import './settings//sizes.scss';
+@import './objects/objects.scss';
+
+.header {
+	background-color: $header-background;
+	@extend .header-obj;
+
+	// it refers to .header, if whe change, we don't have to do anything else
+	&__menu {
+		background-color: $menu-background;
+		@extend .menu-obj;
+	}
+
+	&__button {
+		border: none;
+		border-radius: 50px;
+		background-color: $menu-color;
+		@extend .button-obj;
+	}
+
+	&__button:active {
+		background-color: $color-active;
+	}
+}
+
+.menu {
+	&__link {
+		color: $menu-color;
+		font-size: $font-menu;
+	}
+
+	&__link:active {
+		color: $color-active;
+	}
+}

@@ -7,11 +7,9 @@ import App from './App';
 
 jest.mock('./App', () => {
 	return jest.fn(() => (
-		<MemoryRouter initialEntries={['/']}>
-			<Routes>
-				<Route path="/" element={<Home />} />
-			</Routes>
-		</MemoryRouter>
+		<Routes>
+			<Route path="/" element={<Home />} />
+		</Routes>
 	));
 });
 
@@ -19,6 +17,8 @@ let container: HTMLElement | null = null;
 beforeEach(() => {
 	container = document.createElement('div');
 	document.body.appendChild(container);
+
+	jest.clearAllMocks();
 });
 
 afterEach(() => {
@@ -28,7 +28,12 @@ afterEach(() => {
 });
 test('Render the main page', async () => {
 	act(() => {
-		render(<App />, { container: container });
+		render(
+			<MemoryRouter initialEntries={['/']}>
+				<App />
+			</MemoryRouter>,
+			{ container: container },
+		);
 	});
 	expect(screen.getByText('Hello World')).toBeInTheDocument();
 	const element = await screen.findByTestId('login-form');
