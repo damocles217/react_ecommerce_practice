@@ -1,13 +1,12 @@
-import React, { ComponentType, Fragment } from 'react';
-import style from './Home.module.scss';
+import Presentation from '@src/components/presentation/Presentation';
+import React, { ComponentType } from 'react';
+import styleGlobal from '../index.module.scss';
 
 const Home: ComponentType = () => {
 	return (
-		<Fragment>
-			<div data-test-id="login-form" className={style.data}>
-				Hello World
-			</div>
-		</Fragment>
+		<div className={styleGlobal.pageContent}>
+			<Presentation />
+		</div>
 	);
 };
 
