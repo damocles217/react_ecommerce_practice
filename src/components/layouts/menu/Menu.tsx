@@ -18,6 +18,7 @@ const Menu: ComponentType = () => {
 				data-testid="drop-menu"
 				className={`${style.header__menu}  ${isDrop(click)}`}
 			>
+				<hr />
 				<Link
 					to="/"
 					className={style.menu__link}
@@ -25,6 +26,7 @@ const Menu: ComponentType = () => {
 				>
 					Main
 				</Link>
+				<hr />
 				<Link
 					to="/login"
 					className={style.menu__link}
@@ -32,6 +34,7 @@ const Menu: ComponentType = () => {
 				>
 					Log in
 				</Link>
+				<hr />
 				<Link
 					to="/signup"
 					className={style.menu__link}
@@ -39,6 +42,7 @@ const Menu: ComponentType = () => {
 				>
 					Sign up
 				</Link>
+				<hr />
 				<Link
 					to="/about"
 					className={style.menu__link}
@@ -46,6 +50,7 @@ const Menu: ComponentType = () => {
 				>
 					About the app
 				</Link>
+				<hr />
 			</nav>
 		</header>
 	);

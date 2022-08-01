@@ -5,6 +5,10 @@ import { unmountComponentAtNode } from 'react-dom';
 import Home from '@src/pages/Home/Home';
 import App from './App';
 
+jest.mock('../pages/Home/Home', () =>
+	jest.fn(() => <div data-testid="mocked">Hello World</div>),
+);
+
 jest.mock('./App', () => {
 	return jest.fn(() => (
 		<Routes>
@@ -35,7 +39,7 @@ test('Render the main page', async () => {
 			{ container: container },
 		);
 	});
-	expect(screen.getByText('Hello World')).toBeInTheDocument();
-	const element = await screen.findByTestId('login-form');
+	expect(screen.getByText(/Hello World/i)).toBeInTheDocument();
+	const element = await screen.findByTestId('mocked');
 	expect(element.textContent).toBe('Hello World');
 });

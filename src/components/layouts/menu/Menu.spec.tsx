@@ -45,7 +45,7 @@ describe('Render the Menu', () => {
 	it('Must render the Menu', () => {
 		const dropMenu = screen.getByTestId('drop-menu');
 
-		expect(dropMenu.children.length).toBe(4);
+		expect(dropMenu.children.length).toBe(9);
 		expect(document.querySelectorAll('#mock').length).toBe(4);
 	});
 
@@ -59,17 +59,19 @@ describe('Render the Menu', () => {
 		// Also we can use strings
 		expect(navBar).toHaveTextContent(/Main/);
 	});
-	test('Must render and click the button', () => {
+
+	it('Must render and click the button', () => {
 		fireEvent.click(screen.getByRole('button'));
 
 		expect(dropMenuController).toBeCalledTimes(1);
 		expect(dropMenuController).toReturn();
 	});
 
-	test('Must render and click the label', () => {
-		fireEvent.click(screen.getAllByTestId('mock-anchor')[0]);
-		fireEvent.click(screen.getAllByTestId('mock-anchor')[1]);
+	it('Must render and click the label', () => {
+		screen.getAllByTestId('mock-anchor').forEach(element => {
+			fireEvent.click(element);
+		});
 
-		expect(dropMenuController).toBeCalledTimes(2);
+		expect(dropMenuController).toBeCalledTimes(4);
 	});
 });

@@ -1,0 +1,18 @@
+@import './objects/objects.scss';
+@import './settings/sizes.scss';
+@import './settings/palette.scss';
+
+.main {
+	@extend .main-obj;
+
+	&__title {
+		@extend .title-obj;
+		font-size: $title-size;
+		color: $title-color;
+	}
+
+	&__paragraph {
+		color: $paragraph-color;
+		@extend .paragraph-obj;
+	}
+}

@@ -33,6 +33,7 @@
 	&__link {
 		color: $menu-color;
 		font-size: $font-menu;
+		@extend .link-obj;
 	}
 
 	&__link:active {
