@@ -22,7 +22,7 @@ describe('Render the Home component', () => {
 			render(<Home />, { container });
 		});
 
-		const item = screen.getByTestId("presentation-test");
+		const item = screen.getByTestId('presentation-test');
 
 		expect(item).toBeInTheDocument();
 	});
