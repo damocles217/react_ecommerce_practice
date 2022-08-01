@@ -1,0 +1,31 @@
+// Here are defined all elements
+// just with size, and order, not with style
+
+.menu-obj {
+	position: fixed;
+	margin-top: 10vh;
+	flex-direction: column;
+	justify-content: space-evenly;
+	width: 100%;
+	min-height: 30vh;
+}
+
+.header-obj {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 10vh;
+	display: grid;
+	grid-template-columns: 4fr 1fr;
+}
+
+.button-obj {
+	width: 6vw;
+	height: 6vw;
+	align-self: center;
+	margin-left: 1rem;
+}
+
+.link-obj {
+	margin-left: 5%;
+}

@@ -1,6 +1,8 @@
-import React, { lazy, StrictMode } from 'react';
-const App = lazy(() => import('./components/App'));
+import React, { StrictMode } from 'react';
+import App from '@src/components/App';
 import { createRoot } from 'react-dom/client';
+
+import './globals.scss';
 
 const container = document.querySelector('#root');
 // Use hydrateRoot when the bug is solved

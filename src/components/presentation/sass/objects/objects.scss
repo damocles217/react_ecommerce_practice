@@ -1,0 +1,17 @@
+.main-obj {
+	width: 100%;
+	min-height: 40vh;
+}
+
+.title-obj {
+	text-overflow: ellipsis;
+	text-align: center;
+	margin: 4% 5%;
+}
+
+.paragraph-obj {
+	margin-right: 3%;
+	margin-left: 3%;
+	text-justify: distribute;
+	word-break: keep-all;
+}

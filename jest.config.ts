@@ -8,6 +8,7 @@ const config: Config.InitialOptions = {
 	setupFilesAfterEnv: ['./jest.setup.ts'],
 	moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
 	moduleNameMapper: {
+		'^@src/(.*)$': '<rootDir>/src/$1',
 		// Maps every Css/Sass module
 		'\\.(css|scss)$': 'identity-obj-proxy',
 	},
