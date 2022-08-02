@@ -2,17 +2,16 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const fs = require('fs');
 const publicpath = path.join(__dirname, '..', 'dist');
 
-app.get('*.js', (req, res, next) => {
+app.get('*.js', (req, res) => {
 	// only for test
 	// console.log(`${req.url} -> ${req.url}.gz`);
 
 	req.url = `${req.url}.gz`;
 	res.set('Content-Encoding', 'gzip');
 	res.set('Content-Type', 'application/javascript');
-	next();
+	res.sendFile(path.join(publicpath), req.url);
 });
 
 app.use(express.static(publicpath));

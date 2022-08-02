@@ -22,7 +22,10 @@ const config: Configuration = {
 	},
 
 	plugins: [
-		new MiniCssExtract(),
+		new MiniCssExtract({
+			filename: '[name].[contenthash].css',
+			chunkFilename: '[id].[contenthash].css',
+		}),
 		new HtmlPlugin({
 			scriptLoading: 'module',
 			template: '/global/index.html',
@@ -53,8 +56,8 @@ const config: Configuration = {
 	},
 
 	optimization: {
-		chunkIds: 'named',
-		moduleIds: 'named',
+		chunkIds: 'deterministic',
+		moduleIds: 'deterministic',
 		mangleExports: 'size',
 		minimize: true,
 		minimizer: [
@@ -81,10 +84,8 @@ const config: Configuration = {
 		],
 
 		splitChunks: {
-			chunks: 'all',
+			chunks: 'async',
 			maxAsyncRequests: 30,
-			minSize: 10000,
-			maxSize: 124000,
 
 			cacheGroups: {
 				// Specific configuration for react optimization size
@@ -92,7 +93,8 @@ const config: Configuration = {
 					test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/,
 					name: 'vendor-react',
 					chunks: 'all',
-					maxSize: 140000,
+					minChunks: 1,
+					maxSize: 40000,
 				},
 			},
 		},

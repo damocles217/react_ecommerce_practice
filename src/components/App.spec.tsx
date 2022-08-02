@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, MemoryRouter, Routes } from 'react-router-dom';
 import { unmountComponentAtNode } from 'react-dom';
 import Home from '@src/pages/Home/Home';
+import Signup from '@src/pages/Signup/Signup';
 import App from './App';
 
 jest.mock('../pages/Home/Home', () =>
@@ -13,6 +14,7 @@ jest.mock('./App', () => {
 	return jest.fn(() => (
 		<Routes>
 			<Route path="/" element={<Home />} />
+			<Route path="/signup" element={<Signup />} />
 		</Routes>
 	));
 });
@@ -30,16 +32,30 @@ afterEach(() => {
 	container.remove();
 	container = null;
 });
-test('Render the main page', async () => {
-	act(() => {
+
+describe('Render the App component', () => {
+	test('Must run the main page', async () => {
+		act(() => {
+			render(
+				<MemoryRouter initialEntries={['/']}>
+					<App />
+				</MemoryRouter>,
+				{ container: container },
+			);
+		});
+		expect(screen.getByText(/Hello World/i)).toBeInTheDocument();
+		const element = await screen.findByTestId('mocked');
+		expect(element.textContent).toBe('Hello World');
+	});
+
+	test('Must run the sign page', () => {
 		render(
-			<MemoryRouter initialEntries={['/']}>
+			<MemoryRouter initialEntries={['/signup']}>
 				<App />
 			</MemoryRouter>,
-			{ container: container },
+			{ container },
 		);
+
+		expect(screen.getByTestId('signup-page')).toBeInTheDocument();
 	});
-	expect(screen.getByText(/Hello World/i)).toBeInTheDocument();
-	const element = await screen.findByTestId('mocked');
-	expect(element.textContent).toBe('Hello World');
 });

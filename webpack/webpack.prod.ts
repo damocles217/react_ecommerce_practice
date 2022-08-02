@@ -39,8 +39,8 @@ const config = merge<Configuration>(CommonConfig, {
 
 	plugins: [
 		new CompressionPlugin({
-			test: /\.js(\?.*)?$/i,
-			filename: '[name].js.gz',
+			test: /\.(js)(\?.*)?$/i,
+			filename: '[name][ext].gz',
 			algorithm: 'gzip',
 			deleteOriginalAssets: false,
 		}),
